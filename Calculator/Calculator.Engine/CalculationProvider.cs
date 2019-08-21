@@ -18,9 +18,8 @@ namespace Calculator.Engine
                 return numbers[0].ToNumber();  
 
             var result = 0;
-            for (var i = 0; i < 2; i++)  //TODO GTN: revisit to make sure that when exceeding 2 numbers the rest are ignored
+            for (var i = 0; i < numbers.Length; i++)  
                 result += numbers[i].ToNumber();
-
 
             return result;
 
