@@ -9,7 +9,7 @@ namespace Calculator.Engine
             if (input == null)
                 return 0;
 
-            var numbers = input.Split(',');
+            var numbers = input.Split( new[] { ",", @"\n" }, StringSplitOptions.None);
 
             if (numbers.Length == 0) //TODO GTN: What to do if invalid delimter
                 return 0;
