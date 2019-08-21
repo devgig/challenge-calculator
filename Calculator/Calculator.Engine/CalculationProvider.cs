@@ -27,7 +27,10 @@ namespace Calculator.Engine
             for (var i = 0; i < numbers.Length; i++)
             {
                 var num = numbers[i].ToNumber();
-                if (num < 0)
+
+                if (num > 1000) continue; // ignore > 1000
+
+                if (num < 0) //capture negatives to throw exception
                 {
                     negatives.Add(num.ToString());
                     continue;
