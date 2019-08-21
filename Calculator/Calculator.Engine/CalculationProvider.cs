@@ -22,7 +22,7 @@ namespace Calculator.Engine
                 return numbers[0].ToNumber();  
 
             var result = 0;
-            var negatives = new HashSet<string>();
+            var negatives = new List<string>();
 
             for (var i = 0; i < numbers.Length; i++)
             {

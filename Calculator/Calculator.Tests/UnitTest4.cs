@@ -21,12 +21,12 @@ namespace Calculator.Tests
             var engine = new CalculationProvider();
             try
             {
-                engine.Calculate("1,-2,3,-4");
+                engine.Calculate("1,-2,3,-4,-2");
 
             }
             catch (InvalidOperationException i)
             {
-                Assert.Equal("-2,-4", i.Message);
+                Assert.Equal("-2,-4,-2", i.Message);
             }
         }
     }
