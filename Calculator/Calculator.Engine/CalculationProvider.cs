@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Calculator.Engine
 {
@@ -12,7 +13,11 @@ namespace Calculator.Engine
             if (input == null)
                 return 0;
 
-            var numbers = input.Split( new[] { ",", @"\n" }, StringSplitOptions.None);
+            var regEx = new Regex(@"//."); //capture custom delimiter
+            var match = regEx.Match(input);
+            var delimiter = match.Success ? match.Value?.Last().ToString() : "";
+
+            var numbers = input.Split( new[] { ",", @"\n", delimiter }, StringSplitOptions.None);
 
             if (numbers.Length == 0) //TODO GTN: What to do if invalid delimter
                 return 0;
