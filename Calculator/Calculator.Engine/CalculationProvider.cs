@@ -1,32 +1,25 @@
-﻿using System;
+﻿using Calculator.Engine.Results;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Calculator.Engine
 {
     public class CalculationProvider
     {
-        public int Calculate(string input)
+        public string Calculate(string input, ICalculationResult calculation)
         {
             var parser = new InputParser();
             var numbers = parser.Parse(input);
 
             if (numbers.Length == 0) //TODO GTN: What to do if invalid delimter
-                return 0;
-            
-            if (numbers.Length == 1) //Nothing to add so just return number
-                return numbers[0].ToNumber();
+                return 0.ToString();
 
-            var result = 0;
             var negatives = new List<string>();
 
             for (var i = 0; i < numbers.Length; i++)
             {
                 var num = numbers[i].ToNumber();
-
-                if (num > 1000) continue; // ignore > 1000
 
                 if (num < 0) //capture negatives to throw exception
                 {
@@ -34,14 +27,14 @@ namespace Calculator.Engine
                     continue;
                 }
 
-                result += num;
+                calculation.Add(num > 1000 ? 0 : num); // ignore > 1000
             }
 
             if (negatives.Any())
                 throw new InvalidOperationException(string.Join(",", negatives));
 
 
-            return result;
+            return calculation.Display();
 
         }
     }

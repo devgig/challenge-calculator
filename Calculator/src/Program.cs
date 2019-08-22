@@ -1,4 +1,5 @@
 ﻿using Calculator.Engine;
+using Calculator.Engine.Results;
 using System;
 
 namespace Calculator
@@ -11,7 +12,7 @@ namespace Calculator
             var input = Console.ReadLine();
 
             var engine = new CalculationProvider();
-            Console.WriteLine(engine.Calculate(input));
+            Console.WriteLine(engine.Calculate(input, new AddEquationResult()));
 
         }
     }

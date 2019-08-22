@@ -1,7 +1,5 @@
 ﻿using Calculator.Engine;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Calculator.Engine.Results;
 using Xunit;
 
 namespace Calculator.Tests
@@ -12,7 +10,7 @@ namespace Calculator.Tests
         public void should_support_more_than_two_number()
         {
             var engine = new CalculationProvider();
-            Assert.Equal(15, engine.Calculate("1,2,3,4,5"));
+            Assert.Equal("15", engine.Calculate("1,2,3,4,5", new AddNumericResult()));
 
         }
     }

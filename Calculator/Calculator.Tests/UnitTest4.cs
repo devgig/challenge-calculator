@@ -1,7 +1,6 @@
 ﻿using Calculator.Engine;
+using Calculator.Engine.Results;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Calculator.Tests
@@ -12,7 +11,7 @@ namespace Calculator.Tests
         public void should_throw_exception_on_negative_numbers()
         {
             var engine = new CalculationProvider();
-            Assert.Throws<InvalidOperationException>(() => engine.Calculate("1,-2,3"));
+            Assert.Throws<InvalidOperationException>(() => engine.Calculate("1,-2,3", new AddNumericResult()));
         }
 
         [Fact]
@@ -21,7 +20,7 @@ namespace Calculator.Tests
             var engine = new CalculationProvider();
             try
             {
-                engine.Calculate("1,-2,3,-4,-2");
+                engine.Calculate("1,-2,3,-4,-2", new AddNumericResult());
 
             }
             catch (InvalidOperationException i)

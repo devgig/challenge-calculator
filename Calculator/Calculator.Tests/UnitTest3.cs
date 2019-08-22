@@ -1,7 +1,5 @@
 ﻿using Calculator.Engine;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Calculator.Engine.Results;
 using Xunit;
 
 namespace Calculator.Tests
@@ -12,7 +10,7 @@ namespace Calculator.Tests
         public void should_support_new_line_as_alt_delimeter()
         {
             var engine = new CalculationProvider();
-            Assert.Equal(6, engine.Calculate(@"1\n2,3"));
+            Assert.Equal("6", engine.Calculate(@"1\n2,3", new AddNumericResult()));
 
         }
     }

@@ -1,7 +1,5 @@
 ﻿using Calculator.Engine;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Calculator.Engine.Results;
 using Xunit;
 
 namespace Calculator.Tests
@@ -12,7 +10,7 @@ namespace Calculator.Tests
         public void should_ignore_numbers_greater_than_1000()
         {
             var engine = new CalculationProvider();
-            Assert.Equal(8, engine.Calculate("2,1001,6"));
+            Assert.Equal("8", engine.Calculate("2,1001,6", new AddNumericResult()));
 
         }
     }

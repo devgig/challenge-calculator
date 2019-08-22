@@ -1,7 +1,5 @@
 ﻿using Calculator.Engine;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Calculator.Engine.Results;
 using Xunit;
 
 namespace Calculator.Tests
@@ -12,7 +10,7 @@ namespace Calculator.Tests
         public void should_support_custom_delimeters()
         {
             var engine = new CalculationProvider();
-            Assert.Equal(7, engine.Calculate("//;\n2;5"));
+            Assert.Equal("7", engine.Calculate("//;\n2;5", new AddNumericResult()));
 
         }
 
@@ -20,7 +18,7 @@ namespace Calculator.Tests
         public void should_support_custom_delimeter_with_all_scenarios()
         {
             var engine = new CalculationProvider();
-            Assert.Equal(17, engine.Calculate("//|\n2|5,10"));
+            Assert.Equal("17", engine.Calculate("//|\n2|5,10", new AddNumericResult()));
 
         }
     }
