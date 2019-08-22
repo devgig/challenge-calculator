@@ -10,41 +10,12 @@ namespace Calculator.Engine
     {
         public int Calculate(string input)
         {
-            if (input == null)
-                return 0;
-
-            var regEx = new Regex(@"^//."); //capture custom delimiter
-            var match = regEx.Match(input);
-            var delimiter = match.Success ? match.Value?.Last().ToString() : "";
-
-            var delimList = new List<string>();
-            if(delimiter == "[")
-            {
-                var itemRegEx = new Regex(@"[^\[\]]+");
-                var groupRegEx = new Regex(@"\[[^\[\]]+\]");
-                var groupMatch = groupRegEx.Matches(input);
-                foreach (var item in groupMatch)
-                {
-                    var itemMatch = itemRegEx.Match(item.ToString());
-                    if (itemMatch.Success)
-                        delimList.Add(itemMatch.Value);
-
-                }
-
-            }
-            else
-            {
-                delimList.Add(delimiter);
-            }
-            
-
-            delimList.AddRange(new[] { ",", @"\n" });
-            var numbers = input.Split(delimList.ToArray(), StringSplitOptions.None);
+            var parser = new InputParser();
+            var numbers = parser.Parse(input);
 
             if (numbers.Length == 0) //TODO GTN: What to do if invalid delimter
                 return 0;
-
-
+            
             if (numbers.Length == 1) //Nothing to add so just return number
                 return numbers[0].ToNumber();
 
