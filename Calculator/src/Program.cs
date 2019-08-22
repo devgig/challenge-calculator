@@ -1,6 +1,5 @@
-﻿using Calculator.Engine;
-using Calculator.Engine.Results;
-using System;
+﻿using Autofac;
+using Calculator.Engine;
 
 namespace Calculator
 {
@@ -8,12 +7,22 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter delimited numbers to be added:  ");
-            var input = Console.ReadLine();
+            
+            var container = ConfigureContainer();
+            var application = container.Resolve<Application>();
 
-            var engine = new CalculationProvider();
-            Console.WriteLine(engine.Calculate(input, new AddEquationResult()));
+            application.Run(args); 
+        }
 
+        private static IContainer ConfigureContainer()
+        {
+            var builder = new ContainerBuilder();
+
+            builder.RegisterType<Application>();
+            builder.RegisterType<CalculationProvider>().As<ICalculationProvider>();
+            builder.RegisterType<InputParser>().As<IInputParser>();
+
+            return builder.Build();
         }
     }
 }

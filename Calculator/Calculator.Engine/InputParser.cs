@@ -5,7 +5,11 @@ using System.Text.RegularExpressions;
 
 namespace Calculator.Engine
 {
-    public class InputParser
+    public interface IInputParser
+    {
+        string[] Parse(string input);
+    }
+    public class InputParser : IInputParser
     {
         public string[] Parse(string input)
         {

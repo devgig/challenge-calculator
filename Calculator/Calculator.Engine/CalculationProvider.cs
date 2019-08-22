@@ -5,12 +5,22 @@ using System.Linq;
 
 namespace Calculator.Engine
 {
-    public class CalculationProvider
+    public interface ICalculationProvider
     {
+        string Calculate(string input, ICalculationResult calculation);
+    }
+    public class CalculationProvider : ICalculationProvider
+    {
+        private readonly IInputParser _inputParser;
+
+        public CalculationProvider(IInputParser inputParser)
+        {
+            _inputParser = inputParser;
+        }
         public string Calculate(string input, ICalculationResult calculation)
         {
-            var parser = new InputParser();
-            var numbers = parser.Parse(input);
+            
+            var numbers = _inputParser.Parse(input);
 
             if (numbers.Length == 0) //TODO GTN: What to do if invalid delimter
                 return 0.ToString();

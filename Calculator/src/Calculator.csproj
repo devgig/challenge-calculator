@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Calculator.Engine\Calculator.Engine.csproj" />
   </ItemGroup>
 
