@@ -21,7 +21,7 @@ namespace Calculator.Tests
         public void should_multiply_results()
         {
 
-            Assert.Equal("32", _calculationProvider.Calculate(@"8,4,1", new MultiplyNumericResult()));
+            Assert.Equal("32", _calculationProvider.Calculate(@"8,4,1", CalculationType.Multiply));
         }
 
 
@@ -29,14 +29,14 @@ namespace Calculator.Tests
         public void should_subtract_results()
         {
 
-            Assert.Equal("3", _calculationProvider.Calculate(@"8,4,1", new SubtractNumericResult()));
+            Assert.Equal("3", _calculationProvider.Calculate(@"8,4,1", CalculationType.Subtract));
         }
 
         [Fact]
         public void should_divide_results()
         {
 
-            Assert.Equal("2", _calculationProvider.Calculate(@"8,4,1", new DivideNumericResult()));
+            Assert.Equal("2", _calculationProvider.Calculate(@"8,4,1", CalculationType.Divide));
         }
 
 

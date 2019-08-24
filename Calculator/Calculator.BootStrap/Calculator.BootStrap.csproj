@@ -1,10 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AssemblyName>Calculator</AssemblyName>
-    <RootNamespace>Calculator</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calculator.BootStrap\Calculator.BootStrap.csproj" />
     <ProjectReference Include="..\Calculator.Engine\Calculator.Engine.csproj" />
   </ItemGroup>
 

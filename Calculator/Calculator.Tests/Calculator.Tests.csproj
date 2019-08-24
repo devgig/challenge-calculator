@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Calculator.BootStrap\Calculator.BootStrap.csproj" />
     <ProjectReference Include="..\Calculator.Engine\Calculator.Engine.csproj" />
   </ItemGroup>
 

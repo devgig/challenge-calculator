@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Calculator.Engine.Results
+﻿namespace Calculator.Engine.Results
 {
-    public class DivideNumericResult : ICalculationResult
+    public class DivideNumericResult : ICalculationStrategy
     {
         private int _result;
 
@@ -18,6 +14,11 @@ namespace Calculator.Engine.Results
                 _result = number;
             else
                 _result /= number;
+        }
+
+        public bool CanProcess(CalculationType calculation)
+        {
+            return calculation == CalculationType.Divide;
         }
 
         public string Display()

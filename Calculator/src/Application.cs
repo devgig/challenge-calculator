@@ -18,7 +18,7 @@ namespace Calculator
             Console.Write("Enter delimited numbers to be added:  ");
             var input = Console.ReadLine();
 
-            Console.WriteLine(_calculationProvider.Calculate(input, new AddEquationResult()));
+            Console.WriteLine(_calculationProvider.Calculate(input, CalculationType.AddWithEquation));
 
         }
     }

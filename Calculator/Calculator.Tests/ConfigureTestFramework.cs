@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Calculator.BootStrap;
 using Calculator.Engine;
 using System.Reflection;
 using Xunit;
@@ -26,10 +27,10 @@ namespace Calculator.Tests
                 .InstancePerLifetimeScope();
 
 
-            builder.RegisterType<CalculationProvider>().As<ICalculationProvider>();
-            builder.RegisterType<InputParser>().As<IInputParser>();
+            var bootstrap = new CalculatorBootStrapper();
+            Container = bootstrap.Configure(builder);
 
-            Container = builder.Build();
+           
         }
     }
 }

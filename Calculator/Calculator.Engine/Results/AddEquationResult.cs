@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Calculator.Engine.Results
 {
-    public class AddEquationResult : ICalculationResult
+    public class AddEquationResult :  ICalculationStrategy
     {
         private int _result;
         private List<string> _equition;
@@ -24,6 +22,11 @@ namespace Calculator.Engine.Results
         public string Display()
         {
             return $"{string.Join('+', _equition)} = {_result}";
+        }
+
+        public bool CanProcess(CalculationType calculation)
+        {
+            return calculation == CalculationType.AddWithEquation;
         }
     }
 }

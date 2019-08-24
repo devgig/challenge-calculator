@@ -1,5 +1,4 @@
 ﻿using Calculator.Engine;
-using Calculator.Engine.Results;
 using Xunit;
 using Xunit.Ioc.Autofac;
 
@@ -20,7 +19,7 @@ namespace Calculator.Tests
         [Fact]
         public void should_be_able_to_handle_multiple_custom_delimeters()
         {
-            Assert.Equal("110", _calculationProvider.Calculate(@"//[*][!!][rrr]\n11rrr22*33!!44", new AddNumericResult()));
+            Assert.Equal("110", _calculationProvider.Calculate(@"//[*][!!][rrr]\n11rrr22*33!!44"));
 
         }
 

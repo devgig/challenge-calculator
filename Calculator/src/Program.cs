@@ -1,5 +1,12 @@
 ﻿using Autofac;
+using Autofac.Features.Indexed;
+using Calculator.BootStrap;
 using Calculator.Engine;
+using Calculator.Engine.Results;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace Calculator
 {
@@ -19,10 +26,10 @@ namespace Calculator
             var builder = new ContainerBuilder();
 
             builder.RegisterType<Application>();
-            builder.RegisterType<CalculationProvider>().As<ICalculationProvider>();
-            builder.RegisterType<InputParser>().As<IInputParser>();
 
-            return builder.Build();
+            var bootstrap = new CalculatorBootStrapper();
+            return bootstrap.Configure(builder);
+           
         }
     }
 }

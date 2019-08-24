@@ -1,5 +1,4 @@
 ﻿using Calculator.Engine;
-using Calculator.Engine.Results;
 using Xunit;
 using Xunit.Ioc.Autofac;
 
@@ -20,14 +19,14 @@ namespace Calculator.Tests
         [Fact]
         public void should_support_custom_delimeters()
         {
-            Assert.Equal("7", _calculationProvider.Calculate("//;\n2;5", new AddNumericResult()));
+            Assert.Equal("7", _calculationProvider.Calculate("//;\n2;5"));
 
         }
 
         [Fact]
         public void should_support_custom_delimeter_with_all_scenarios()
         {
-            Assert.Equal("17", _calculationProvider.Calculate("//|\n2|5,10", new AddNumericResult()));
+            Assert.Equal("17", _calculationProvider.Calculate("//|\n2|5,10"));
 
         }
     }

@@ -1,5 +1,4 @@
 ﻿using Calculator.Engine;
-using Calculator.Engine.Results;
 using System;
 using Xunit;
 using Xunit.Ioc.Autofac;
@@ -21,7 +20,7 @@ namespace Calculator.Tests
         [Fact]
         public void should_throw_exception_on_negative_numbers()
         {
-            Assert.Throws<InvalidOperationException>(() => _calculationProvider.Calculate("1,-2,3", new AddNumericResult()));
+            Assert.Throws<InvalidOperationException>(() => _calculationProvider.Calculate("1,-2,3"));
         }
 
         [Fact]
@@ -29,7 +28,7 @@ namespace Calculator.Tests
         {
             try
             {
-                _calculationProvider.Calculate("1,-2,3,-4,-2", new AddNumericResult());
+                _calculationProvider.Calculate("1,-2,3,-4,-2");
 
             }
             catch (InvalidOperationException i)

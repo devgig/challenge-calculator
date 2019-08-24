@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Calculator.Engine.Results
+﻿namespace Calculator.Engine.Results
 {
-    public class MultiplyNumericResult : ICalculationResult
+    public class MultiplyNumericResult : ICalculationStrategy
     {
         private int _result;
 
@@ -15,6 +11,11 @@ namespace Calculator.Engine.Results
         public void Add(int number)
         {
             _result *= number;
+        }
+
+        public bool CanProcess(CalculationType calculation)
+        {
+            return calculation == CalculationType.Multiply;
         }
 
         public string Display()

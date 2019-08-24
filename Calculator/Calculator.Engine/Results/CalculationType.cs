@@ -4,10 +4,12 @@ using System.Text;
 
 namespace Calculator.Engine.Results
 {
-    public interface ICalculationResult
+    public enum CalculationType
     {
-       void Add(int number);
-        string Display();
-      
+        Add,
+        AddWithEquation,
+        Divide,
+        Subtract,
+        Multiply
     }
 }

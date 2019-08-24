@@ -7,23 +7,27 @@ namespace Calculator.Engine
 {
     public interface ICalculationProvider
     {
-        string Calculate(string input, ICalculationResult calculation);
+        string Calculate(string input, CalculationType calculation = CalculationType.Add);
     }
     public class CalculationProvider : ICalculationProvider
     {
         private readonly IInputParser _inputParser;
+        private readonly Func<CalculationType, ICalculationStrategy> _calculationFactory;
 
-        public CalculationProvider(IInputParser inputParser)
+        public CalculationProvider(IInputParser inputParser, Func<CalculationType, ICalculationStrategy> calculationFactory)
         {
             _inputParser = inputParser;
+            _calculationFactory = calculationFactory;
         }
-        public string Calculate(string input, ICalculationResult calculation)
+        public string Calculate(string input, CalculationType calculation = CalculationType.Add)
         {
             
             var numbers = _inputParser.Parse(input);
 
             if (numbers.Length == 0) //TODO GTN: What to do if invalid delimter
                 return 0.ToString();
+
+            var strategy = _calculationFactory(calculation);
 
             var negatives = new List<string>();
 
@@ -37,15 +41,18 @@ namespace Calculator.Engine
                     continue;
                 }
 
-                calculation.Add(num > 1000 ? 0 : num); // ignore > 1000
+                strategy.Add(num > 1000 ? 0 : num); // ignore > 1000
             }
 
             if (negatives.Any())
                 throw new InvalidOperationException(string.Join(",", negatives));
 
 
-            return calculation.Display();
+            return strategy.Display();
 
         }
+
+
+      
     }
 }

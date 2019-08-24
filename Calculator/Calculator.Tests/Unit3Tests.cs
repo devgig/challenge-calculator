@@ -1,5 +1,4 @@
 ﻿using Calculator.Engine;
-using Calculator.Engine.Results;
 using Xunit;
 using Xunit.Ioc.Autofac;
 
@@ -20,7 +19,7 @@ namespace Calculator.Tests
         [Fact]
         public void should_support_new_line_as_alt_delimeter()
         {
-            Assert.Equal("6", _calculationProvider.Calculate(@"1\n2,3", new AddNumericResult()));
+            Assert.Equal("6", _calculationProvider.Calculate(@"1\n2,3"));
 
         }
     }

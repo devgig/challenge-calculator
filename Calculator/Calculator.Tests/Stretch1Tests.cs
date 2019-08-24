@@ -1,8 +1,5 @@
 ﻿using Calculator.Engine;
 using Calculator.Engine.Results;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 using Xunit.Ioc.Autofac;
 
@@ -25,7 +22,7 @@ namespace Calculator.Tests
         public void should_return_equation()
         {
             
-            Assert.Equal("2+4+0+0+6 = 12", _calculationProvider.Calculate(@"2,4,rrrr,1001,6", new AddEquationResult()));
+            Assert.Equal("2+4+0+0+6 = 12", _calculationProvider.Calculate(@"2,4,rrrr,1001,6", CalculationType.AddWithEquation));
         }
     }
 }
