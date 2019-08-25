@@ -8,7 +8,7 @@
         {
             _result = default;
         }
-        public void Add(int number)
+        public void AddToCalculation(int number)
         {
             if (_result == default)
                 _result = number;
@@ -21,7 +21,7 @@
             return calculation == CalculationType.Subtract;
         }
 
-        public string Display()
+        public string DisplayCalculation()
         {
             return _result.ToString();
         }

@@ -7,8 +7,8 @@ namespace Calculator.Engine.Results
     public interface ICalculationStrategy 
     {
         bool CanProcess(CalculationType calculation);
-        void Add(int number);
-        string Display();
+        void AddToCalculation(int number);
+        string DisplayCalculation();
 
     }
 

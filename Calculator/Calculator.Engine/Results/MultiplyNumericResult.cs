@@ -8,7 +8,7 @@
         {
             _result = 1;
         }
-        public void Add(int number)
+        public void AddToCalculation(int number)
         {
             _result *= number;
         }
@@ -18,7 +18,7 @@
             return calculation == CalculationType.Multiply;
         }
 
-        public string Display()
+        public string DisplayCalculation()
         {
             return _result.ToString();
         }

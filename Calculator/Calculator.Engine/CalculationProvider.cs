@@ -41,14 +41,14 @@ namespace Calculator.Engine
                     continue;
                 }
 
-                strategy.Add(num > 1000 ? 0 : num); // ignore > 1000
+                strategy.AddToCalculation(num > 1000 ? 0 : num); // ignore > 1000
             }
 
             if (negatives.Any())
                 throw new InvalidOperationException(string.Join(",", negatives));
 
 
-            return strategy.Display();
+            return strategy.DisplayCalculation();
 
         }
 

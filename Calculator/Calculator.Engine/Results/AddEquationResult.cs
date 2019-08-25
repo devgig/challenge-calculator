@@ -12,14 +12,14 @@ namespace Calculator.Engine.Results
             _result = 0;
             _equition = new List<string>();
         }
-        public void Add(int number)
+        public void AddToCalculation(int number)
         {
             _result += number;
             _equition.Add(number.ToString());
 
         }
 
-        public string Display()
+        public string DisplayCalculation()
         {
             return $"{string.Join('+', _equition)} = {_result}";
         }
